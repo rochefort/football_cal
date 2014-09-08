@@ -11,7 +11,7 @@ class Football
 
   def update_all
     YAML.load_file('players.yaml').each do |name, settings|
-      schedule(name, settings['url'], settings['title'])
+      schedule(name, settings['url'], settings['name_ja'])
     end
   end
 
@@ -22,7 +22,7 @@ class Football
     create_ical(name, title, cards)
   end
 
-  def create_ical(name, title, cards)
+  def create_ical(name, name_ja, cards)
     cal = Icalendar::Calendar.new
     cal.timezone do |t|
       t.tzid = 'Asia/Tokyo'
@@ -33,17 +33,17 @@ class Football
         s.dtstart      = '19700101T000000'
       end
     end
-    cal.append_custom_property('X-WR-CALNAME;VALUE=TEXT', title)
+    cal.append_custom_property('X-WR-CALNAME;VALUE=TEXT', "試合日程 #{name_ja}")
     cards.each do |card|
       cal.event do |e|
-        e.summary     = "#{card.section}節 #{card.rival}戦"
-        e.description = "[#{card.home_away}]#{title} #{card.section}節 #{card.rival}戦"
+        e.summary     = "#{card.section}節 #{card.rival}"
+        e.description = "#{name_ja} 第#{card.section}節 #{card.rival}戦 [#{card.home_away}]"
         e.dtstart     = Icalendar::Values::DateTime.new(card.kickoff_at)
         e.dtend       = Icalendar::Values::DateTime.new(card.kickoff_at + 2.hour)
       end
     end
     cal.publish
-    open("#{name}.ics", 'w') { |f| f.puts(cal.to_ical) }
+    open("ics/#{name}.ics", 'w') { |f| f.puts(cal.to_ical) }
   end
 
   # 0: 説         e.g.: 01
