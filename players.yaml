@@ -1,9 +1,9 @@
 nagatomo:
-  url: http://www.sanspo.com/soccer/europe/italy/2014_2015/schedule/player/com/63.html
+  url: http://www.sanspo.com/soccer/europe/italy/2016_2017/schedule/player/com/89.html
   name_ja: 長友佑都
-honda:
-  url: http://www.sanspo.com/soccer/europe/italy/2014_2015/schedule/player/com/62.html
-  name_ja: 本田圭佑
-kagawa:
-  url: http://www.sanspo.com/soccer/europe/germany/2014_2015/schedule/player/com/65.html
-  name_ja: 香川真司
+#honda:
+#  url: http://www.sanspo.com/soccer/europe/italy/2014_2015/schedule/player/com/62.html
+#  name_ja: 本田圭佑
+#kagawa:
+#  url: http://www.sanspo.com/soccer/europe/germany/2014_2015/schedule/player/com/65.html
+#  name_ja: 香川真司
